@@ -1,5 +1,5 @@
 <div class="item">
-    <span class="item__label">Quoc</span>
-    <input class="item__switch" type="checkbox"/>
-    <input class="item__switch" type="checkbox"/>
+    <span class="item__label">{{player.name}}</span>
+    <input class="item__switch" type="checkbox" disabled [checked]="player.tuesdayOn"/>
+    <input class="item__switch" type="checkbox" disabled [checked]="player.thursdayOn"/>
 </div>

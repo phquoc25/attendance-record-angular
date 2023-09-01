@@ -1,12 +1,14 @@
 <div class="header">
     <div class="header__name"></div>
     <div class="header__status">
-        <div class="header-counter">2</div>
-        <div class="header-img" [ngStyle]="{'background-image': imagePath}"></div>
+        <div class="header-img" [ngStyle]="{'background-image': tuesdayStatus}">
+            <span class="status-counter">{{tuesdayCount}}</span>
+        </div>
     </div>
     <div class="header__status">
-        <div class="header-counter">2</div>
-        <div class="header-img" [ngStyle]="{'background-image': imagePath}"></div>
+        <div class="header-img" [ngStyle]="{'background-image': thursdayStatus}">
+            <span class="status-counter">{{thursdayCount}}</span>
+        </div>
     </div>
 </div>
-<app-player></app-player>
+<app-player *ngFor="let player of players" [player]="player"></app-player>

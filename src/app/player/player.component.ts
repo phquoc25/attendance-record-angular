@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { Player } from './player.model';
 
 @Component({
   selector: 'app-player',
@@ -6,5 +7,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./player.component.scss']
 })
 export class PlayerComponent {
-
+  @Input() player: Player;
 }
