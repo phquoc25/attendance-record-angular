@@ -8,6 +8,23 @@
     &__status {
         justify-self: center;
     }
+    &__name {
+        display: flex;
+    }
+    &__btn {
+        color: white;
+        font-weight: 600;
+        background-color: #0ebeff;
+        border-radius: 10px;
+        height: 30px;
+        width: 40%;
+        align-self: center;
+        border: none;
+        cursor: pointer;
+        :hover {
+            background-color: #064584;
+        }
+    }
 }
 
 .header-img {
