@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HomeComponent } from './home.component';
 import { PlayerListComponent } from '../player-list/player-list.component';
 import { PlayerComponent } from '../player/player.component';
+import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatButtonModule } from '@angular/material/button';
 
 @NgModule({
   declarations: [
@@ -11,7 +13,9 @@ import { PlayerComponent } from '../player/player.component';
     PlayerComponent
   ],
   imports: [
-    CommonModule
+    CommonModule,
+    MatSlideToggleModule,
+    MatButtonModule
   ]
 })
 export class HomeModule { }
