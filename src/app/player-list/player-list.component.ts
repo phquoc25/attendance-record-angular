@@ -20,11 +20,13 @@ export class PlayerListComponent {
   thursdayCount = 0;
   private _players: Player[];
   @Input() set players(players: Player[]) {
-    this._players = players;
-    this.tuesdayCount = players.filter(player => player.tuesdayOn).length;
-    this.tuesdayStatus = this.tuesdayCount >= 4 ? PlayerListComponent.HAPPY_ICON : PlayerListComponent.UN_HAPPY_ICON;
-    this.thursdayCount = players.filter(player => player.thursdayOn).length;
-    this.thursdayStatus = this.thursdayCount >= 4 ? PlayerListComponent.HAPPY_ICON : PlayerListComponent.UN_HAPPY_ICON;
+    if (players) {
+      this._players = players;
+      this.tuesdayCount = players.filter(player => player.tuesdayOn).length;
+      this.tuesdayStatus = this.tuesdayCount >= 4 ? PlayerListComponent.HAPPY_ICON : PlayerListComponent.UN_HAPPY_ICON;
+      this.thursdayCount = players.filter(player => player.thursdayOn).length;
+      this.thursdayStatus = this.thursdayCount >= 4 ? PlayerListComponent.HAPPY_ICON : PlayerListComponent.UN_HAPPY_ICON;
+    }
   }
   get players(): Player[] {
     return this._players;

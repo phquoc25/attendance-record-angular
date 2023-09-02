@@ -9,9 +9,9 @@ import { Observable } from 'rxjs';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit{
-  players: Observable<Player[]>;
+  players$: Observable<Player[]>;
   constructor(private readonly playerService: PlayerService) {}
   ngOnInit(): void {
-    this.players = this.playerService.getAllPlayers();
+    this.players$ = this.playerService.getAllPlayers();
   }
 }
