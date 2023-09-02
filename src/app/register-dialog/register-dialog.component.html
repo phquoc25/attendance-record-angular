@@ -1,0 +1,15 @@
+<div class="popup">
+    <h2 class="popup__header">Hi {{player.name}}</h2>
+    <div class="popup__body">
+        <label>Tuesday?</label>
+        <mat-slide-toggle class="item__switch" [checked]="player.tuesdayOn" />
+        <label>Thursday?</label>
+        <mat-slide-toggle class="item__switch" [checked]="player.thursdayOn" />
+    </div>
+    <div class="popup__footer">
+        <button mat-raised-button color="primary" 
+            (click)="dialogRef.close(player)">OK</button>
+        <button mat-raised-button color="primary" 
+            (click)="dialogRef.close()">Cancel</button>
+    </div>
+</div>

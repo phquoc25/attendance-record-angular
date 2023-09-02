@@ -5,17 +5,21 @@ import { PlayerListComponent } from '../player-list/player-list.component';
 import { PlayerComponent } from '../player/player.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
+import { DialogModule } from '@angular/cdk/dialog';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
 @NgModule({
   declarations: [
     HomeComponent,
     PlayerListComponent,
-    PlayerComponent
+    PlayerComponent,
+    RegisterDialogComponent
   ],
   imports: [
     CommonModule,
     MatSlideToggleModule,
-    MatButtonModule
+    MatButtonModule,
+    DialogModule
   ]
 })
 export class HomeModule { }

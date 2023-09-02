@@ -1,14 +1,21 @@
 <div class="header">
     <div class="header__name">
-        <button class="header__btn" mat-raised-button color="warn">Register</button>
+        <button 
+            class="header__btn" 
+            mat-raised-button 
+            color="warn"
+            (click)="onRegisterClick()"
+        >Register</button>
     </div>
     <div class="header__status">
         <div class="header-img" [ngStyle]="{'background-image': tuesdayStatus}">
+            <span class="status-type">Tue</span>
             <span class="status-counter">{{tuesdayCount}}</span>
         </div>
     </div>
     <div class="header__status">
         <div class="header-img" [ngStyle]="{'background-image': thursdayStatus}">
+            <span class="status-type">Thu</span>
             <span class="status-counter">{{thursdayCount}}</span>
         </div>
     </div>

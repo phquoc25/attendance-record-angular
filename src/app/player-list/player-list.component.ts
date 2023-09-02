@@ -1,5 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { Player } from '../player/player.model';
+import { Dialog } from '@angular/cdk/dialog';
+import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
 @Component({
   selector: 'app-player-list',
@@ -23,5 +25,18 @@ export class PlayerListComponent {
   }
   get players(): Player[] {
     return this._players;
+  }
+  constructor(private readonly dialog: Dialog) {}
+
+  onRegisterClick(): void {
+    this.dialog.open(RegisterDialogComponent, {
+      width: '400px',
+      height: '200px',
+      panelClass: 'custom-dialog',
+      disableClose: true,
+      data: {
+        player: this.players[0]
+      }
+    });
   }
 }

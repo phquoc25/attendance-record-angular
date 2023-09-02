@@ -1,0 +1,17 @@
+.popup {
+    display: grid;
+    grid-template-rows: 50px auto 50px;
+    height: 100%;
+    &__body {
+        padding: 10px 0;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+    }
+    &__footer {
+        display: flex;
+        justify-content: flex-end;
+        align-items: flex-end;
+        gap: 10px;
+    }
+}
