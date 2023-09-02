@@ -3,10 +3,7 @@
     grid-template-rows: 50px auto 50px;
     height: 100%;
     &__body {
-        padding: 10px 0;
-        display: flex;
-        gap: 5px;
-        align-items: center;
+        display: grid;
     }
     &__footer {
         display: flex;
@@ -14,4 +11,14 @@
         align-items: flex-end;
         gap: 10px;
     }
+}
+
+.body-input {
+    height: 80px;
+}
+
+.body-cbx {
+    display: flex;
+    gap: 5px;
+    align-items: center;
 }

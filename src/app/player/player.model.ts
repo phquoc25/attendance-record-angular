@@ -1,7 +1,7 @@
 export interface Player {
-    id: number;
+    id?: number;
     name: string;
-    avatar: string;
+    avatar?: string;
     tuesdayOn: boolean;
     thursdayOn: boolean;
 }

@@ -1,15 +1,38 @@
 <div class="popup">
-    <h2 class="popup__header">Hi {{player.name}}</h2>
+    <div class="popup__header" *ngIf="data.player; else newPlayer">
+        <h2>Hi {{player.name}}!</h2>
+    </div>
+    <ng-template #newPlayer>
+        <h2>Hi there!</h2>
+    </ng-template>
     <div class="popup__body">
-        <label>Tuesday?</label>
-        <mat-slide-toggle class="item__switch" [checked]="player.tuesdayOn" />
-        <label>Thursday?</label>
-        <mat-slide-toggle class="item__switch" [checked]="player.thursdayOn" />
+        <ng-container *ngIf="!data.player">
+            <mat-form-field class="body-input">
+                <mat-label>Your name please</mat-label>
+                <input matInput type="text" [(ngModel)]="playerName">
+                <button *ngIf="playerName" matSuffix mat-icon-button aria-label="Clear" (click)="playerName=''">
+                    <mat-icon>close</mat-icon>
+                </button>
+            </mat-form-field>
+        </ng-container>
+        <div class="body-cbx">
+            <label>Tuesday?</label>
+            <mat-slide-toggle 
+                class="item__switch" 
+                [checked]="player.tuesdayOn" 
+                (change)="player.tuesdayOn = !player.tuesdayOn"
+            />
+            <label>Thursday?</label>
+            <mat-slide-toggle class="item__switch" 
+                [checked]="player.thursdayOn"
+                (change)="player.thursdayOn = !player.thursdayOn"
+            />
+        </div>
     </div>
     <div class="popup__footer">
         <button mat-raised-button color="primary" 
-            (click)="dialogRef.close(player)">OK</button>
-        <button mat-raised-button color="primary" 
-            (click)="dialogRef.close()">Cancel</button>
+            [disabled]="!playerName"
+            (click)="onSubmit()">OK</button>
+        <button mat-raised-button color="primary" (click)="dialogRef.close()">Cancel</button>
     </div>
 </div>

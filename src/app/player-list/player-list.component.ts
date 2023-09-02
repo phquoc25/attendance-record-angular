@@ -2,6 +2,7 @@ import { Component, Input } from '@angular/core';
 import { Player } from '../player/player.model';
 import { Dialog } from '@angular/cdk/dialog';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
+import { UserService } from '../core/user/user.service';
 
 @Component({
   selector: 'app-player-list',
@@ -26,17 +27,22 @@ export class PlayerListComponent {
   get players(): Player[] {
     return this._players;
   }
-  constructor(private readonly dialog: Dialog) {}
+  constructor(private readonly dialog: Dialog,
+    private readonly userService: UserService) {}
 
   onRegisterClick(): void {
-    this.dialog.open(RegisterDialogComponent, {
-      width: '400px',
-      height: '200px',
+    const dialogRef = this.dialog.open(RegisterDialogComponent, {
+      width: '500px',
+      height: '250px',
       panelClass: 'custom-dialog',
       disableClose: true,
       data: {
-        player: this.players[0]
+        player: this.userService.getCurrentUser()
       }
+    });
+
+    dialogRef.closed.subscribe(result => {
+      console.log('Dialog result:', result);
     });
   }
 }

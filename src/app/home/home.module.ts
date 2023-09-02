@@ -6,6 +6,11 @@ import { PlayerComponent } from '../player/player.component';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatButtonModule } from '@angular/material/button';
 import { DialogModule } from '@angular/cdk/dialog';
+import { MatIconModule } from '@angular/material/icon';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { FormsModule } from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 
 @NgModule({
@@ -17,9 +22,14 @@ import { RegisterDialogComponent } from '../register-dialog/register-dialog.comp
   ],
   imports: [
     CommonModule,
+    FormsModule,
     MatSlideToggleModule,
     MatButtonModule,
-    DialogModule
+    DialogModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule,
+    BrowserAnimationsModule
   ]
 })
 export class HomeModule { }

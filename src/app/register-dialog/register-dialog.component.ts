@@ -10,8 +10,22 @@ import { Player } from '../player/player.model';
 })
 export class RegisterDialogComponent {
   player: Player;
+  playerName: string;
   constructor(public dialogRef: DialogRef<Player>, 
     @Inject(DIALOG_DATA) public data: RegisterDialogData) {
-      this.player = data.player;
+      if (data.player) {
+        this.player = { ...data.player };
+        this.playerName = data.player.name;
+      } else {
+        this.player = {
+          name: this.playerName,
+          tuesdayOn: false,
+          thursdayOn: false
+        }
+      }
     }
+  onSubmit(): void {
+    this.player.name = this.playerName;
+    this.dialogRef.close(this.player);
+  }
 }
