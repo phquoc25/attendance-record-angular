@@ -3,6 +3,8 @@ import { Player } from '../player/player.model';
 import { Dialog } from '@angular/cdk/dialog';
 import { RegisterDialogComponent } from '../register-dialog/register-dialog.component';
 import { UserService } from '../core/user/user.service';
+import { PlayerService } from '../core/player/player.service';
+import { filter, switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-player-list',
@@ -28,10 +30,12 @@ export class PlayerListComponent {
     return this._players;
   }
   constructor(private readonly dialog: Dialog,
-    private readonly userService: UserService) {}
+    private readonly userService: UserService,
+    private readonly playerService: PlayerService,
+  ) { }
 
   onRegisterClick(): void {
-    const dialogRef = this.dialog.open(RegisterDialogComponent, {
+    const dialogRef = this.dialog.open<Player>(RegisterDialogComponent, {
       width: '500px',
       height: '250px',
       panelClass: 'custom-dialog',
@@ -41,8 +45,19 @@ export class PlayerListComponent {
       }
     });
 
-    dialogRef.closed.subscribe(result => {
-      console.log('Dialog result:', result);
-    });
+    dialogRef.closed.pipe(
+      filter(player => !!player),
+      switchMap(player => this.playerService.save(player))
+    ).subscribe(player => this.updatePlayers(player));
+  }
+
+  private saveCurrentUser(player: Player): void {
+    this.userService.saveCurrentUser(player);
+  }
+
+  private updatePlayers(newPlayer: Player): void {
+    this.saveCurrentUser(newPlayer);
+    const oldPlayers = this.players.filter(player => player.id !== newPlayer.id);
+    this.players = [...oldPlayers, newPlayer];
   }
 }

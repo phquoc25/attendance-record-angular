@@ -11,4 +11,8 @@ export class UserService {
   getCurrentUser(): Player {
     return this.localStorageService.getObject<Player>(StorageKey.CURRENT_USER);
   }
+
+  saveCurrentUser(player: Player): void {
+    this.localStorageService.setObject<Player>(StorageKey.CURRENT_USER, player);
+  }
 }
