@@ -12,15 +12,21 @@ export class PlayerService {
   private url$: Observable<string>;
   constructor(private readonly httpClient: HttpClient, private readonly configService: ConfigurationService) {
     this.url$ = this.configService.getConfig().pipe(
-      map(config => `${config.playerUrl}/attendees`)
+      map(config => config.playerUrl)
     );
     this.players$ = this.url$.pipe(
-      switchMap(url => httpClient.get<Player[]>(url)
+      switchMap(url => httpClient.get<Player[]>(`${url}/attendees`)
       ));
   }
   save(player: Player): Observable<Player> {
     return this.url$.pipe(
-      switchMap(url => this.httpClient.post<Player>(url, player)
+      switchMap(url => this.httpClient.post<Player>(`${url}/attendees`, player)
+      ));
+  }
+
+  remove(id: string): Observable<string> {
+    return this.url$.pipe(
+      switchMap(url => this.httpClient.delete<string>(`${url}/admin/attendees/${id}`)
       ));
   }
 
