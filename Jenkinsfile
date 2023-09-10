@@ -1,17 +1,9 @@
-pipeline {
-  agent any
-  stages {
-    stage('Build') {
-      steps {
-        sh 'yarn build'
-      }
-    }
+node {
+  stage('Build') {
+    sh 'yarn build'
+  }
 
-    stage('Test') {
-      steps {
-        sh 'yarn test'
-      }
-    }
-
+  stage('Test') {
+    sh 'yarn test'
   }
 }
